@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 Crypto Forecast Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <h1 class="header-title">📈 Crypto Forecast Dashboard</h1>
+            <p class="header-subtitle">Prophet ML Model • Price Predictions</p>
+        </header>
+
+        <div class="dashboard-main">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <h2 class="sidebar-title">⚙️ Forecast Configuration</h2>
+                    
+                    <div class="config-form">
+                        <div class="form-group">
+                            <label for="crypto-select" class="form-label">Cryptocurrency</label>
+                            <select id="crypto-select" class="form-control">
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="DOGE">Dogecoin (DOGE)</option>
+                                <option value="GOLD">Gold (XAU)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="start-date" class="form-label">Start Date</label>
+                            <input type="date" id="start-date" class="form-control" value="2025-08-09">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="end-date" class="form-label">End Date</label>
+                            <input type="date" id="end-date" class="form-control" value="2025-08-15">
+                        </div>
+
+                        <button id="forecast-btn" class="btn btn--primary btn--full-width">
+                            <span class="btn-text">Generate Forecast</span>
+                            <div class="btn-loader hidden">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- Top Metrics Cards -->
+                <section class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Current Price</div>
+                        <div class="metric-value" id="current-price">$107,227.63</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Predicted Price</div>
+                        <div class="metric-value" id="predicted-price">$107,572.73</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Forecast Change</div>
+                        <div class="metric-value forecast-positive" id="forecast-change">+0.32%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Forecast Period</div>
+                        <div class="metric-value" id="forecast-period">7 days</div>
+                    </div>
+                </section>
+
+                <!-- Chart Section -->
+                <section class="chart-section">
+                    <div class="chart-header">
+                        <h2 class="chart-title">Price Forecast Visualization</h2>
+                        <p class="chart-subtitle">Prophet ML model predictions with trend analysis</p>
+                    </div>
+                    <div class="chart-container" style="position: relative; height: 400px;">
+                        <canvas id="price-chart"></canvas>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Generating forecast...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
